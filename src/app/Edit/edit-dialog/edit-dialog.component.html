@@ -1,0 +1,64 @@
+
+<mat-toolbar color="primary">
+    <p color="primary">Update the New Joiners data</p>
+    </mat-toolbar>
+
+
+<div class="container">
+    <h3 mat-dialog-title>Update id: {{data.id}}</h3>
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" [disabled]="true" placeholder="Id" [(ngModel)]="data.id" name="id" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <!--Textarea for demo purposes-->
+      <div class="form">
+        <mat-form-field color="accent">
+          <textarea matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.name" name="name" required ></textarea>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <!--Contains mat-hint for characters count and has maxLengt set-->
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #inputstate class="form-control" placeholder="Email" [(ngModel)]="data.email" name="state" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput placeholder="contactnumber" [pattern]="mobNumberPattern" [(ngModel)]="data.contactnumber" name="contactnumber">
+          </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="salary" [pattern]="mobNumberPattern" [(ngModel)]="data.salary" name="contactnumber">
+        </mat-form-field>
+    </div>
+      <div class="form">
+        <mat-form-field color="accent" *ngIf=department>
+          <input matInput placeholder="department" [(ngModel)]="data.department" name="department">
+        </mat-form-field>
+      </div>
+      <!-- <div class="form">
+        <mat-form-field color="accent" *ngIf=employeelist>
+          <input matInput placeholder="Employee List" [(ngModel)]="data.employeeList" name="employeeList">
+        </mat-form-field>
+    </div> -->
+      <div mat-dialog-actions>
+        <!-- <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button> -->
+        <button mat-button type="button" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        
+
+      </div>
+    </form>
+  </div>
+  
